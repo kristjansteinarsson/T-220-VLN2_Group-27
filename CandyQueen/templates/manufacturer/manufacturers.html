@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <div class="manufacturer-container">
+        {% for manufacturer in manufacturers %}
+
+            <div class="manufacturer-item">
+                <div><h3>{{ manufacturer.name }}</h3></div>
+                <img style="width: 200px; height: 200px; object-fit: cover; border-radius: 8px;" src="{{ manufacturer.manufacturer_cover_image }}" alt="Image" />
+                {% if manufacturer.logo == "None" %}
+                 {% else %}   
+                    <p>{{ manufacturer.logo }}</p>
+                {% endif %}
+                <div> Address: {{ manufacturer.address }}</div>
+                <div> City: {{ manufacturer.city }}</div>
+                <div> Postal code: {{ manufacturer.postal_code }}</div>
+                <br>
+                <div class="manufacturer-category">Bio: {{ manufacturer.bio }}</div>
+            </div>
+
+        {% endfor %}
+    </div>
+
+{% endblock %}
