@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>{{ user.name }}'s properties</h1>
+
+    {% if properties %}
+      <div class="row">
+        {% for prop in properties %}
+          <div class="col-md-4 mb-3">
+            {% include "property/_single_property.html" with property=prop is_detail=False user=True %}
+          </div>
+        {% endfor %}
+      </div>
+    {% else %}
+      <p>This seller has no properties.</p>
+    {% endif %}
+{% endblock %}

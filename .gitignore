@@ -1,22 +1,25 @@
-# Python
-*.pyc
-*.pyo
-__pycache__
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
 
-# Django
+# Django stuff:
 *.log
 *.pot
 *.pyc
 db.sqlite3
-/media
-/static
+*.sqlite3
+/media/
+/static/
 
 # Environment files
 .env
+CastelApartments/venv/
 
-# IDE files
+# VSCode / JetBrains IDEs
 .vscode/
 .idea/
 
-# Other files
-*.sqlite3
+# MacOS / Windows trash
+.DS_Store
+Thumbs.db

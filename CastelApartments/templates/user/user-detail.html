@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    {% include "user/_single_user.html" with is_detail=False user=user %}
+
+{% endblock %}
