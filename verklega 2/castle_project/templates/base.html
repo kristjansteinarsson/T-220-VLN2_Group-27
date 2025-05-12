@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+{% load static %}
+{% load humanize %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Castle Apartments</title>
+    <link rel="stylesheet" href="{% static 'property/css/home_style.css' %}">
+
+</head>
+<body>
+    <header>
+        <a href="/" class="logo-link">
+            <img src="{% static 'property/images/castle.png' %}" alt="Castle Logo" class="header-logo">
+        </a>
+        <h1 class="header-title">Castle Apartments</h1>
+    </header>
+
+    <main class="container">
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <a href="/" class="logo-link">
+                <img src="{% static 'property/images/castle.png' %}" alt="Castle Logo" class="footer-logo">
+            </a>
+            <span class="footer-title">Castle Apartments</span>
+            <span class="copyright">© {% now "Y" %}</span>
+        </div>
+    </footer>
+
+    <script src="{% static 'property/js/home_script.js' %}"></script>
+</body>
+</html>
