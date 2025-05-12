@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - Castle Apartments</title>
-    <link rel="icon" href="{% static 'properties/images/castle.png' %}">
-    <link rel="stylesheet" href="{% static 'properties/css/style.css' %}">
+    <link rel="icon" href="{% static 'property/images/castle.png' %}">
+    <link rel="stylesheet" href="{% static 'property/css/style.css' %}">
 </head>
 <body>
     <header>
@@ -14,22 +14,27 @@
     </header>
 
     <main class="center-box">
-        <form method="post" class="form-container">
+        <form method="post" class="form-container"> 
             {% csrf_token %}
             <h2>Login</h2>
 
             <label for="email">Email</label>
-            <input type="email" id="email" name="email" placeholder="Your Email">
+            <input type="email" id="email" name="email" placeholder="Your Email" required>
 
             <label for="password">Password</label>
-            <input type="password" id="password" name="password" placeholder="Your Password">
+            <input type="password" id="password" name="password" placeholder="Your Password" required>
 
             <button type="submit">Log In</button>
+            
+            <!-- Add this signup link section -->
+            <div class="signup-link">
+                Don't have an account? <a href="{% url 'signup' %}">Create account</a>
+            </div>
         </form>
     </main>
 
     <footer>
-        <img src="{% static 'properties/images/castle.png' %}" alt="Castle Icon">
+        <img src="{% static 'property/images/castle.png' %}" alt="Castle Icon">
         <p>Castle Apartments Co.</p>
     </footer>
 </body>
