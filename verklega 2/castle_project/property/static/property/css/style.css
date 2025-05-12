@@ -1,0 +1,86 @@
+body {
+    font-family: sans-serif;
+    margin: 0;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    }
+
+    header, footer {
+    border: 1px solid black;
+    text-align: center;
+    padding: 1rem 0;
+    }
+
+    footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin-top: auto;
+    }
+
+    footer img {
+    height: 30px;
+    width: 30px;
+}
+
+    .center-box {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    }
+
+    .form-container {
+    background: #ddd;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 3px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    min-width: 250px;
+    }
+
+    .form-container h2 {
+    margin-bottom: 1rem;
+    }
+
+    input {
+    display: block;
+    width: 100%;
+    margin: 0.5rem 0;
+    padding: 0.5rem;
+    border-radius: 15px;
+    border: 1px solid #aaa;
+    }
+
+    button {
+    margin: 0.5rem 0;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    border: none;
+    background: #eee;
+    cursor: pointer;
+    }
+
+    a {
+    font-size: 0.9rem;
+    color: #333;
+    text-decoration: underline;
+    }
+
+    .account-types {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+    }
+
+    .account-types button {
+    flex: 1;
+    margin: 0 0.25rem;
+    }
+
+    .selected {
+    border: 2px solid black;
+    }
