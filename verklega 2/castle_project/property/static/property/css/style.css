@@ -84,17 +84,15 @@ a {
 .selected {
     border: 2px solid black;
 }
-.signup-link {
+.signup-link, .login-link{
     margin-top: 1rem;
     font-size: 0.9rem;
 }
 
-.signup-link a {
-    color: #4a6fa5;
+.signup-link a, .login-link a {
     text-decoration: none;
-    font-weight: bold;
 }
 
-.signup-link a:hover {
+.signup-link a:hover, .login-link a:hover {
     text-decoration: underline;
 }
