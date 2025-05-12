@@ -13,7 +13,6 @@ header {
 .header-title {
   margin-left: 1rem;
   font-size: 1.6rem;
-  font-weight: bold;
   color: #fff;
 }
 
@@ -69,11 +68,6 @@ footer {
   margin-left: auto;
 }
 
-/* Optional: Add a gradient effect */
-header, footer {
-  background: linear-gradient(135deg, #2c3e50 0%, #1a252f 100%);
-}
-
 /* Container Styles */
 .container {
   max-width: 1200px;
@@ -104,6 +98,7 @@ header, footer {
 .form-row {
   display: flex;
   gap: 1.5rem;
+  align-items: flex-end; 
 }
 
 .form-group {
@@ -193,6 +188,19 @@ header, footer {
   line-height: 1.5;
 }
 
+/* Input field styling */
+input[type="text"],
+select {
+  padding: 0.6rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  width: 100%;
+  height: 42px; 
+  box-sizing: border-box;
+}
+
+/* Button Styles */
 .view-button {
   background-color: #2c3e50;
   color: white;
@@ -209,40 +217,32 @@ header, footer {
   background-color: #34495e;
 }
 
-/* Shared button style */
-.button,
-.search-button,
-.slider-toggle,
-.view-button {
+/* Search Button */
+.search-button {
   background-color: #2c3e50;
   color: white;
   border: none;
-  padding: 0.75rem 1.5rem;
   border-radius: 6px;
   font-weight: 600;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  transition: all 0.3s ease;
+  
+  /* Alignment fixes */
+  height: 42px;
+  padding: 0 1.5rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  line-height: 1;
 }
 
-/* Hover effect */
-.button:hover,
-.search-button:hover,
-.slider-toggle:hover,
-.view-button:hover {
+.search-button:hover {
   background-color: #34495e;
   transform: translateY(-2px);
 }
 
-/* Input field (like zip code) styling */
-input[type="text"],
-select {
-  padding: 0.6rem;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-  font-size: 1rem;
-  width: 100%;
-}
-/* Custom Range Slider Styles */
+/* Range Slider */
 input[type="range"] {
   appearance: none;
   width: 100%;

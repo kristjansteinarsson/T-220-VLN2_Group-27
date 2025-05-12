@@ -32,12 +32,12 @@
                             <div class="slider-values">
                                 <span id="min-value">{{ min_price|default:0|floatformat:0 }}</span>
                                 <span>to</span>
-                                <span id="max-value">{{ max_price|default:10000000|floatformat:0 }}</span>
+                                <span id="max-value">{{ max_price|default:20000000|floatformat:0 }}</span>
                             </div>
-                            <input type="range" id="min-price" name="min_price" min="0" max="10000000" 
+                            <input type="range" id="min-price" name="min_price" min="0" max="20000000" 
                                     value="{{ request.GET.min_price|default:0 }}" step="10000">
-                            <input type="range" id="max-price" name="max_price" min="0" max="10000000" 
-                                    value="{{ request.GET.max_price|default:10000000 }}" step="10000">
+                            <input type="range" id="max-price" name="max_price" min="0" max="20000000" 
+                                    value="{{ request.GET.max_price|default:20000000 }}" step="10000">
                         </div>
                     </div>
                     <!-- Property Type -->
@@ -48,7 +48,6 @@
                             <option value="house">House</option>
                             <option value="apartment">Apartment</option>
                             <option value="condo">Condo</option>
-                            <option value="townhouse">Townhouse</option>
                         </select>
                     </div>
                 </div>
