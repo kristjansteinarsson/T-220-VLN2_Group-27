@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home - Castle Apartments</title>
-    <link rel="icon" type="image/png" href="{% static 'properties/images/castle.png' %}">
-    <link rel="stylesheet" href="{% static 'properties/css/home_style.css' %}">
+    <link rel="stylesheet" href="{% static 'property/css/home_style.css' %}">
+    <img src="{% static 'property/images/castle.png' %}">
 </head>
 <body>
     <header>
@@ -21,6 +21,7 @@
         <div class="rounded-box search-box">
             <form method="get" action="." class="search-form">
                 <div class="form-row">
+
                     <!-- Price Range -->
                     <div class="form-group">
                         <label for="price-toggle">Price Range (ISK)</label>
@@ -89,7 +90,7 @@
                 <!-- Property 2 -->
                 <div class="property-card">
                     <div class="property-image-container">
-                        <img src="{% static 'properties/images/property2.jpg' %}" alt="Cozy House">
+                        <img src="{% static 'property/images/property2.jpg' %}" alt="Cozy House">
                     </div>
                     <div class="property-info">
                         <h3>Cozy Suburban House</h3>
