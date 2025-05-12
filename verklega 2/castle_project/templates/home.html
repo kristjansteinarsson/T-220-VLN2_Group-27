@@ -17,7 +17,7 @@
     </header>
 
     <main class="container">
-        <!-- Search Box -->
+
         <div class="rounded-box search-box">
             <form method="get" action="." class="search-form">
                 <div class="form-row">
@@ -34,9 +34,9 @@
                                 <span id="max-value">{{ max_price|default:10000000|floatformat:0 }}</span>
                             </div>
                             <input type="range" id="min-price" name="min_price" min="0" max="10000000" 
-                                   value="{{ request.GET.min_price|default:0 }}" step="10000">
+                                    value="{{ request.GET.min_price|default:0 }}" step="10000">
                             <input type="range" id="max-price" name="max_price" min="0" max="10000000" 
-                                   value="{{ request.GET.max_price|default:10000000 }}" step="10000">
+                                    value="{{ request.GET.max_price|default:10000000 }}" step="10000">
                         </div>
                     </div>
 
