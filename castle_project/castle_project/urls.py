@@ -19,6 +19,8 @@ from django.urls import path
 from django.contrib import admin
 from django.urls import path, include
 urlpatterns = [
+    #path('', include('logging')),
+    #path('propertires/', include('property.urls')),
     path('', include('property.urls')),
     path('user/', include('user.urls')),
     path('offer/', include('offer.urls')),
