@@ -1,0 +1,26 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Django stuff:
+*.log
+*.pot
+*.pyc
+db.sqlite3
+*.sqlite3
+/media/
+/static/
+
+# Environment files
+.env
+CastelApartments/venv/
+
+# VSCode / JetBrains IDEs
+.vscode/
+.idea/
+
+# MacOS / Windows trash
+.DS_Store
+Thumbs.db
+"verklega 2.zip" 

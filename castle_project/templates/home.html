@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Castle Apartments</title>
+    <link rel="stylesheet" href="{% static 'property/css/home_style.css' %}">
+
+</head>
+<body>
+    <header>
+        <a href="/" class="logo-link">
+            <img src="{% static 'property/images/castle.png' %}" alt="Castle Logo" class="header-logo">
+        </a>
+        <h1 class="header-title">Castle Apartments</h1>
+    </header>
+
+    <main class="container">
+
+        <div class="rounded-box search-box">
+            <form method="get" action="." class="search-form">
+                <div class="form-row">
+
+                    <!-- Price Range -->
+                    <div class="form-group">
+                        <label for="price-toggle">Price Range (ISK)</label>
+                        <button type="button" id="price-toggle" class="slider-toggle" onclick="toggleSlider()">
+                            Adjust Price Range
+                        </button>
+                        <div id="price-slider" class="slider-container">
+                            <div class="slider-values">
+                                <span id="min-value">{{ min_price|default:0|floatformat:0 }}</span>
+                                <span>to</span>
+                                <span id="max-value">{{ max_price|default:20000000|floatformat:0 }}</span>
+                            </div>
+                            <input type="range" id="min-price" name="min_price" min="0" max="20000000" 
+                                    value="{{ request.GET.min_price|default:0 }}" step="10000">
+                            <input type="range" id="max-price" name="max_price" min="0" max="20000000" 
+                                    value="{{ request.GET.max_price|default:20000000 }}" step="10000">
+                        </div>
+                    </div>
+                    <!-- Property Type -->
+                    <div class="form-group">
+                        <label for="property_type">Property Type</label>
+                        <select id="property_type" name="property_type">
+                            <option value="">All Types</option>
+                            <option value="house">House</option>
+                            <option value="apartment">Apartment</option>
+                            <option value="condo">Condo</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <!-- Postal Code -->
+                    <div class="form-group">
+                        <label for="postal_code">Postal Code</label>
+                        <input type="text" id="postal_code" name="postal_code" placeholder="e.g. 101">
+                    </div>
+
+                    <button type="submit" class="search-button">Search Properties</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Properties Box -->
+        <div class="rounded-box properties-box">
+            <h2 class="box-title">Available Properties</h2>
+            
+            <div class="property-grid">
+                {% for property in properties %}
+                    <div class="property-card">
+                        <div class="property-image-container">
+                            {% with property.propertyimage_set.first as first_image %}
+                                {% if first_image %}
+                                    <img src="{{ first_image.image_url }}" class="card-img-top" alt="Property image"/>
+                                {% endif %}
+                            {% endwith %}
+                        </div>
+                        <div class="property-info">
+                            <h3>{{ property.address }} {{ property.house_number }}</h3><h4>{{ property.city }} {{ property. }}</h4>
+                            <div class="property-meta">
+                                {% if property.sold == 1 %}
+                                    <span class="property-type">Available</span>
+                                {% else %}
+                                    <span class="property-type">Sold</span>
+                                {% endif %}
+                                <span class="property-price">{{ property.sold |floatformat:0 }} ISK</span>
+                            </div>
+                            <p class="property-location">{{ property.location }}</p>
+                            <p class="property-description">{{ property.description|truncatewords:20 }}</p>
+                            <a href="{% url 'property-by-id' property.id %}">
+                                <button class="view-button">View Details</button>
+                            </a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div class="footer-content">
+            <a href="/" class="logo-link">
+                <img src="{% static 'property/images/castle.png' %}" alt="Castle Logo" class="footer-logo">
+            </a>
+            <span class="footer-title">Castle Apartments</span>
+            <span class="copyright">© {% now "Y" %}</span>
+        </div>
+    </footer>
+
+    <script src="{% static 'property/js/home_script.js' %}"></script>
+</body>
+</html>

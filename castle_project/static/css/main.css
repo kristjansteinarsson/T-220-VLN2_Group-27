@@ -1,0 +1,35 @@
+.property-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap:30px;
+}
+.property-item {
+    padding: 20px;
+    background-color: rgb(155, 155, 155, .5)
+}
+
+.property-item .property-thumbnail{
+    height: 150px;
+    width: 150px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.user-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap:30px;
+}
+.user-item{
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+}
+
+.user-image{
+    width: 200px !important;
+    height: 200px !important;
+    object-fit: cover !important;
+    border-radius: 8px !important;
+}

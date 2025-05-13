@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <div class="property-container">
+        {% for offer in offers %}
+
+            {% include "offer/_single_offer.html" with is_detail=False offer=offer %}
+
+        {% endfor %}
+    </div>
+
+{% endblock %}
