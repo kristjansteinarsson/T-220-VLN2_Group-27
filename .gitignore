@@ -14,7 +14,7 @@ db.sqlite3
 
 # Environment files
 .env
-castle_project/venv/
+CastelApartments/venv/
 
 # VSCode / JetBrains IDEs
 .vscode/

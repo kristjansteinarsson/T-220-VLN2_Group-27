@@ -1,0 +1,1 @@
+console.log("property_filter.js loaded");

@@ -3,6 +3,7 @@
 {% block content %}
 
     <div class="property-container">
+
         {% for property in properties %}
 
             {% include "property/_single_property.html" with is_detail=False property=property %}
