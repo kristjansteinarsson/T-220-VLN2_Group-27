@@ -1,0 +1,77 @@
+.payment-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+    font-family: Arial, sans-serif;
+}
+
+.payment-options {
+    background: white;
+    border-radius: 8px;
+    padding: 2rem;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.payment-options h2 {
+    color: #2c3e50;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 1rem;
+    margin-bottom: 2rem;
+}
+
+.payment-method {
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    border: 1px solid #eee;
+    border-radius: 6px;
+}
+
+.payment-method h3 {
+    color: #34495e;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.payment-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.payment-form input {
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background: #f9f9f9;
+    color: #666;
+}
+
+.demo-btn {
+    padding: 0.8rem;
+    background: #95a5a6;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: not-allowed;
+}
+
+
+.payment-form button {
+    padding: 0.8rem;
+    background: #ecf0f1;
+    color: #333;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: not-allowed;
+}
+
+.payment-form button.btn {
+    margin-bottom: 0.5rem;
+}
+
+.payment-form button.btn.mt-3 {
+    margin-top: 1.5rem;
+}

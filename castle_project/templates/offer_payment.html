@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="payment-container text-center">
+    <button class="btn btn-light mb-3" disabled>← Go back</button>
+
+    <div class="payment-options">
+        <h2>Make an Offer</h2>
+        <div class="payment-form">
+            <button class="btn" disabled>Credit Card</button>
+            <button class="btn" disabled>Bank Transfer</button>
+            <button class="btn" disabled>Mortgage</button>
+            <button class="btn mt-3" disabled>Select</button>
+        </div>
+    </div>
+</div>
+{% endblock %}

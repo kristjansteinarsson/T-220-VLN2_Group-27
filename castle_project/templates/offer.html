@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+
+<div class="payment-container">
+    <div class="payment-options">
+        <h2>Make an Offer</h2>
+        
+        <div class="payment-method">
+            <h3><i class="fas fa-credit-card"></i> Credit Card</h3>
+            
+            <div class="payment-form">
+                <input type="text" placeholder="Cardholder Name..." disabled>
+                <input type="text" placeholder="Credit Card Number..." disabled>
+                <input type="text" placeholder="MM/YY" disabled>
+                <button class="demo-btn" disabled>Purchase</button>
+            </div>
+        </div>
+
+        <div class="payment-method">
+            <h3><i class="fas fa-university"></i> Bank Transfer</h3>
+            <div class="payment-form">
+                <input type="text" placeholder="Account Holder Name..." disabled>
+                <input type="text" placeholder="Bank Account Number..." disabled>
+                <button class="demo-btn" disabled>Transfer</button>
+            </div>
+        </div>
+
+        <div class="payment-method">
+            <h3><i class="fas fa-home"></i> Mortgage</h3>
+            <div class="demo-notice">
+            <div class="payment-form">
+                <input type="text" placeholder="Full Name..." disabled>
+                <input type="email" placeholder="Email..." disabled>
+                <button class="demo-btn" disabled>Apply for Mortgage</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

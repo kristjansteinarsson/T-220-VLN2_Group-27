@@ -2,9 +2,20 @@ from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from property.models import Property, PropertyImage, PropertyType
 from user.models import User
+from django.conf import settings
 from .forms.property_create_form import PropertyCreateForm
 from .forms.property_update_form import PropertyUpdateForm
 
+MOCK_PROPERTY = {
+    "propertyimage_set": None,
+    "id": 1,
+    "location": "HEllo",
+    "description": "Desc",
+    "address": "Mosabard",
+    "house_number": 16,
+    "city": "Hafnarfjordur",
+    "user": {"id": 1}
+}
 
 def index(request):
     if 'search_filter' in request.GET:
@@ -24,9 +35,19 @@ def index(request):
     })
 
 def get_property_by_id(request, id):
-    props = Property.objects.get(id=id)
+    if settings.DISABLE_DB:
+        props = MOCK_PROPERTY
+    else:
+        props = Property.objects.get(id=id)
+
     return render(request, "property/property-detail.html", {
         "property": props
+    })
+
+def get_property_type_by_id(request):
+    property_types = PropertyType.objects.all()
+    return render(request, 'home.html', {
+        'property_types': property_types,
     })
 
 def get_property_type_by_id(request):
@@ -41,25 +62,34 @@ from django.shortcuts import render
 from .models import Property, PropertyType
 
 def home(request):
-    property_types = PropertyType.objects.all()
+    if settings.DISABLE_DB:
+        properties = [
+            MOCK_PROPERTY,
+            MOCK_PROPERTY,
+        ]
+        property_types = []
+        min_price = 0
+        max_price = 0
+    else:
+        property_types = PropertyType.objects.all()
 
-    properties = Property.objects.all()
+        properties = Property.objects.all()
 
-    min_price = request.GET.get('min_price', 0)
-    max_price = request.GET.get('max_price', 20000000)
+        min_price = request.GET.get('min_price', 0)
+        max_price = request.GET.get('max_price', 20000000)
 
-    if min_price:
-        properties = properties.filter(price__gte=min_price)
-    if max_price:
-        properties = properties.filter(price__lte=max_price)
+        if min_price:
+            properties = properties.filter(price__gte=min_price)
+        if max_price:
+            properties = properties.filter(price__lte=max_price)
 
-    property_type_id = request.GET.get('property_type', None)
-    if property_type_id:
-        properties = properties.filter(property_type__id=property_type_id)
+        property_type_id = request.GET.get('property_type', None)
+        if property_type_id:
+            properties = properties.filter(property_type__id=property_type_id)
 
-    postal_code = request.GET.get('postal_code', '').strip()
-    if postal_code:
-        properties = properties.filter(postal_code__icontains=postal_code)
+        postal_code = request.GET.get('postal_code', '').strip()
+        if postal_code:
+            properties = properties.filter(postal_code__icontains=postal_code)
 
 
     return render(request, "home.html", {
@@ -111,3 +141,19 @@ def update_property(request, id):
             'id': id,
             'form': PropertyUpdateForm(instance=property)
         })
+
+
+def offer_view(request, property_id):
+    property = get_object_or_404(Property, id=property_id)
+    
+    dummy_offer = {
+        'status': 'demo',
+       'price': property.price * 0.9,  # 10% below asking as example
+        'contact_phone': '+354 123 4567',
+        'contact_email': 'offers@example.com'
+    }
+    
+    return render(request, 'offer.html', {
+        'property': property,
+        'offer': dummy_offer 
+    })
