@@ -1,1 +1,6 @@
-console.log("property_filter.js loaded");
+document.addEventListener('DOMContentLoaded', function() {
+    function registerSearchButtonHandler(){
+        console.log("hello")
+    }
+    registerSearchButtonHandler();
+})

@@ -1,6 +1,6 @@
 from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render, redirect, get_object_or_404
-from property.models import Property, PropertyImage
+from property.models import Property, PropertyImage, PropertyType
 from user.models import User
 from .forms.property_create_form import PropertyCreateForm
 from .forms.property_update_form import PropertyUpdateForm
@@ -29,11 +29,45 @@ def get_property_by_id(request, id):
         "property": props
     })
 
+def get_property_type_by_id(request):
+    property_types = PropertyType.objects.all()
+    return render(request, 'home.html', {
+        'property_types': property_types,
+    })
+
 from .models import Property
 
+from django.shortcuts import render
+from .models import Property, PropertyType
+
 def home(request):
-    properties = Property.objects.all()  # Limit to top 6 for example
-    return render(request, "home.html", {"properties": properties})
+    property_types = PropertyType.objects.all()
+
+    properties = Property.objects.all()
+
+    min_price = request.GET.get('min_price', 0)
+    max_price = request.GET.get('max_price', 20000000)
+
+    if min_price:
+        properties = properties.filter(price__gte=min_price)
+    if max_price:
+        properties = properties.filter(price__lte=max_price)
+
+    property_type_id = request.GET.get('property_type', None)
+    if property_type_id:
+        properties = properties.filter(property_type__id=property_type_id)
+
+    postal_code = request.GET.get('postal_code', '').strip()
+    if postal_code:
+        properties = properties.filter(postal_code__icontains=postal_code)
+
+
+    return render(request, "home.html", {
+        'properties': properties,
+        'property_types': property_types,
+        'min_price': min_price,
+        'max_price': max_price,
+    })
 
 def login_view(request):
     return render(request, 'log_in.html')

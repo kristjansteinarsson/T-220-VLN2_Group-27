@@ -15,6 +15,21 @@
         <li class="nav-item">
           <a class="nav-link" href="{% url "offer-index" %}">Offers</a>
         </li>
+          {% if user.is_authenticated %}
+            <li class="nav-item">
+                <form method="post" action="{% url 'logout' %}">
+                    {% csrf_token %}
+                    <button type="submit" class="nav-link">Logout</button>
+                </form>
+            </li>
+          {% else %}
+              <li class="nav-item">
+                <a class="nav-link" href="{% url "register" %}">Signup</a>
+            </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url "login" %}">Login</a>
+            </li>
+          {% endif %}
       </ul>
     </div>
   </div>

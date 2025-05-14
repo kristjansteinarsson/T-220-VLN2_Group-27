@@ -1,10 +1,15 @@
+{% extends "base.html" %}
 {% load static %}
+
+{% block content %}
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - Castle Apartments</title>
+    <title>Sign Up - Castle Apartments</title>
     <link rel="icon" href="{% static 'properties/images/castle.png' %}">
     <link rel="stylesheet" href="{% static 'properties/css/style.css' %}">
 </head>
@@ -14,17 +19,10 @@
     </header>
 
     <main class="center-box">
-        <form method="post" class="form-container">
+        <form method="post" action="{% url 'register' %}" class="form-container">
             {% csrf_token %}
-            <h2>Login</h2>
-
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" placeholder="Your Email">
-
-            <label for="password">Password</label>
-            <input type="password" id="password" name="password" placeholder="Your Password">
-
-            <button type="submit">Log In</button>
+            {{ form }}
+            <input type="submit" class="btn btn-primary" value="Register" />
         </form>
     </main>
 
@@ -34,3 +32,5 @@
     </footer>
 </body>
 </html>
+
+{% endblock %}

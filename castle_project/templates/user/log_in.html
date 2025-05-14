@@ -1,4 +1,9 @@
+{% extends "base.html" %}
 {% load static %}
+
+{% block content %}
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,20 +19,10 @@
     </header>
 
     <main class="center-box">
-        <form method="post" class="form-container">
+        <form method="post" action="{% url 'login' %}" class="form-container">
             {% csrf_token %}
-            <h2>Sign Up</h2>
-
-            <label for="name">Name</label>
-            <input type="text" id="name" name="name" placeholder="Your Name">
-
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" placeholder="Your Email">
-
-            <label for="password">Password</label>
-            <input type="password" id="password" name="password" placeholder="Your Password">
-
-            <button type="submit">Create Account</button>
+            {{ form }}
+            <input type="submit" class="btn btn-primary" value="Login" />
         </form>
     </main>
 
@@ -37,3 +32,5 @@
     </footer>
 </body>
 </html>
+
+{% endblock %}

@@ -19,6 +19,7 @@ class Property(models.Model):
     nr_of_bathrooms = models.IntegerField()
     square_meters = models.IntegerField()
     sold = models.BooleanField()
+    property_type = models.ForeignKey(PropertyType, on_delete=models.CASCADE)
     user = models.ForeignKey(
         'user.User',
         on_delete=models.CASCADE,

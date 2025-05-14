@@ -1,5 +1,6 @@
+from django.contrib.auth.forms import UserCreationForm
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 from user.models import User
 from property.models import Property
@@ -27,4 +28,20 @@ def get_user_properties(request, id):
         "properties": manu.properties.all()
     })
 
+def register(request):
+    print("🔔 register called, method=", request.method)
+    if request.method == "POST":
+        print("🔔 received POST data:", request.POST)
+        form = UserCreationForm(request.POST)
+        print("🔔 form fields:", form.fields.keys())
+        if form.is_valid():
+            print("✅ form valid!")
+            form.save()
+            return redirect('login')
+        print("🚨 form invalid:", form.errors)
+        return render(request, 'user/sign_up.html', {'form': form})
+    print("🔔 GET request – rendering form")
+    return render(request, 'user/sign_up.html', {'form': UserCreationForm()})
 
+def profile(request):
+    return render(request, 'user/profile.html')
