@@ -43,5 +43,7 @@
         {% else %}
             <a href="{% url 'property-by-id' property.id %}" class="btn btn-primary">View</a>
         {% endif %}
+        <a href="{% url 'update-property' id=property.id %}" class="btn btn-secondary">Update</a>
+        <a href="{% url 'delete-property' id=property.id %}" class="btn btn-secondary">Delete</a>
     </div>
 </div>

@@ -11,4 +11,7 @@ class User(models.Model):
     bio = models.TextField(max_length=1000)
     user_is_realestate = models.BooleanField()
 
+    def __str__(self):
+        return self.name
+
 
