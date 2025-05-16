@@ -58,6 +58,7 @@
         <!-- Properties Box -->
         <div class="rounded-box properties-box">
             <h2 class="box-title">Available Properties</h2>
+            <p>Found {{ properties|length }} properties</p>
             
             <div class="property-grid">
                 {% for property in properties %}
@@ -70,7 +71,7 @@
                             {% endwith %}
                         </div>
                         <div class="property-info">
-                            <h3>{{ property.address }} {{ property.house_number }}</h3><h4>{{ property.city }} {{ property. }}</h4>
+                            <h3>{{ property.address }} {{ property.house_number }}</h3><h4>{{ property.city }}</h4>
                             <div class="property-meta">
                                 {% if property.sold == 1 %}
                                     <span class="property-type">Available</span>

@@ -5,7 +5,7 @@ import user.apps
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Disable DB for local development
-DISABLE_DB = True
+DISABLE_DB = False
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
@@ -79,8 +79,8 @@ DATABASES = {
         'PORT': '5432'
     }
 }
-if DISABLE_DB:
-    DATABASES = {}
+#if DISABLE_DB:
+#    DATABASES = {}
 
 
 # Password validation

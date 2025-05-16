@@ -36,14 +36,21 @@
 
         {% if is_detail %}
             <a href="javascript:history.back()" class="btn btn-primary">Go back</a>
-            <p>
-                <strong>Seller:</strong>
-                <a href="{% url 'user-by-id' property.user.id %}">{{ property.user.name }}</a>
-            </p>
+            {% if property.user %}
+              <a href="{% url 'user-by-id' property.user.id %}">View Owner</a>
+            {% else %}
+              <p><em>No owner assigned.</em></p>
+            {% endif %}
         {% else %}
             <a href="{% url 'property-by-id' property.id %}" class="btn btn-primary">View</a>
         {% endif %}
-        <a href="{% url 'update-property' id=property.id %}" class="btn btn-secondary">Update</a>
-        <a href="{% url 'delete-property' id=property.id %}" class="btn btn-secondary">Delete</a>
+        {% if is_owner %}
+          <a href="{% url 'update-property' property.id %}" class="btn btn-primary">Update</a>
+          <form action="{% url 'delete-property' property.id %}" method="post" style="display:inline;">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger">Delete</button>
+          </form>
+        {% endif %}
+
     </div>
 </div>
