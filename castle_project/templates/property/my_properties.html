@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<h2>My Properties</h2>
+
+<a href="{% url 'create-property' %}" class="btn btn-outline-dark mb-3"><i class="fa fa-home"></i> Create New Property</a>
+
+<div class="property-grid">
+  {% for property in properties %}
+    <div class="property-card">
+      <div class="property-image-container">
+        {% with property.propertyimage_set.first as first_image %}
+          {% if first_image %}
+            <img src="{{ first_image.image_url }}" class="card-img-top" alt="Property image" />
+          {% endif %}
+        {% endwith %}
+      </div>
+
+      <div class="property-info">
+        <h3>{{ property.address }} {{ property.house_number }}</h3>
+        <h4>{{ property.city }}</h4>
+        <div class="property-meta">
+          {% if property.sold == 1 %}
+            <span class="property-type">Available</span>
+          {% else %}
+            <span class="property-type">Sold</span>
+          {% endif %}
+          <span class="property-price">{{ property.price|floatformat:0 }} ISK</span>
+        </div>
+        <p class="property-location">{{ property.location }}</p>
+        <p class="property-description">{{ property.description|truncatewords:20 }}</p>
+        <a href="{% url 'property-by-id' property.id %}">
+          <button class="view-button">View Details</button>
+        </a>
+      </div>
+    </div>
+  {% empty %}
+    <p>You don’t own any properties yet.</p>
+  {% endfor %}
+</div>
+
+{% endblock %}
