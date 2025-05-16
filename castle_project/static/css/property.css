@@ -49,3 +49,13 @@
 .btn-secondary{
     background-color: #9c9c9c;
 }
+
+.centered-image-container {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
+
+.centered-image-container img {
+    width: 50%;
+}

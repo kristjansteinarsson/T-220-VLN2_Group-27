@@ -1,8 +1,15 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/property.css' %}?v=1.1">
+
 <div class="card">
     {% if is_detail %}
         {% for image in property.propertyimage_set.all %}
-            <img src="{{ image.image_url }}" alt="property image" class="card-img-top"/>
+            <div style="display: flex; justify-content: center; padding: 10px;">
+                <img src="{{ image.image_url }}" alt="property image" class="card-img-top" style="width: 50%; border-radius: 10px;" />
+            </div>
+            <hr>
         {% endfor %}
+
     {% else %}
         {% with property.propertyimage_set.first as first_image %}
             {% if first_image %}
@@ -32,13 +39,17 @@
         <p class="card-text">Square meters: {{ property.square_meters }}</p>
         <p class="card-text">Property type: {{ property.property_type }}</p>
 
+        <p>
+            <strong>Seller:</strong>
+            <a href=""></a> 
+            <!--  property.user.name -->
+            <!-- % url 'user-by-id' property.user.id % -->
+        </p>
+
         <div class="card-bottom">
             {% if is_detail %}
                 <a href="javascript:history.back()" class="btn btn-primary">Go back</a>
-                <p>
-                    <strong>Seller:</strong>
-                    <a href="{% url 'user-by-id' property.user.id %}">{{ property.user.name }}</a>
-                </p>
+                
             {% else %}
                 <a href="{% url 'property-by-id' property.id %}" class="btn btn-primary">View</a>
             {% endif %}
