@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/profile.css' %}">
+{% endblock %}
+
+<div class="profile-container">
+    
+    <div class="top-left">
+        <div class="top-left">
+            <a href="{% url 'home' %}" class="go-back-btn"><i class="fa-solid fa-arrow-left"></i>Go back</a>
+        </div>
+    </div>
+
+    <div class="top-right">
+    </div>o0
+
+    <div class="profile-image-wrapper">
+        <img src="{% static 'images/profile-placeholder.png' %}" alt="Profile" class="profile-image">
+        
+        <label for="upload-photo" class="edit-icon">
+            <i class="fas fa-pencil-alt"></i>
+        </label>
+    </div>
+
+    <div class="user-info">
+        <h2>John “Name” Smith</h2>
+        <p>john@smith.com<br>+354 6969420</p>
+
+        <button class="profile-btn">My properties</button>
+        <button class="profile-btn">My purchase offers</button>
+    </div>
+
+    <div class="about-section">
+        <h3>About Me:</h3>
+        <p>
+            Hi hello I am a normal human, I work a normal human job.  I am not trying to pawn off my house because the cops are after me, who told you that? Question everything.
+        </p>
+    </div>
+</div>
+{% endblock %}

@@ -47,7 +47,7 @@
                     <div class="form-group">
                         <label for="postal_code">Postal Code</label>
                         <input type="text" id="postal_code" name="postal_code" placeholder="e.g. 101" style="width: 545px"
-                               value="{{ request.GET.postal_code }}">
+                                value="{{ request.GET.postal_code }}">
                     </div>
                 </div>
 
@@ -81,12 +81,14 @@
                             </div>
                             <p class="property-location">{{ property.location }}</p>
                             <p class="property-description">{{ property.description|truncatewords:20 }}</p>
-                            <a href="{% url 'property-by-id' property.id %}">
-                                <button class="view-button">View Details</button>
-                            </a>
-                            <a href="{% url 'property-offer' property.id %}" class="offer-button">
-                                Make Offer
-                            </a>
+                            <div class="button-container">
+                                <a href="{% url 'property-by-id' property.id %}" class="button-wrapper">
+                                    <button class="view-button">View Details</button>
+                                </a>
+                                <a href="{% url 'property-offer' property.id %}" class="button-wrapper">
+                                    <button class="offer-button">Make Offer</button>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 {% endfor %}

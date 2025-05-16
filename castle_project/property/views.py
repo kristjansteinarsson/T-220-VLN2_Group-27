@@ -143,12 +143,12 @@ def update_property(request, id):
         })
 
 
-def offer_view(request, property_id):
+def offer_view(request, property_id): 
     property = get_object_or_404(Property, id=property_id)
     
     dummy_offer = {
         'status': 'demo',
-       'price': property.price * 0.9,  # 10% below asking as example
+        'price': property.price * 0.9,
         'contact_phone': '+354 123 4567',
         'contact_email': 'offers@example.com'
     }
@@ -157,3 +157,7 @@ def offer_view(request, property_id):
         'property': property,
         'offer': dummy_offer 
     })
+
+
+def profile_view(request):
+    return render(request, 'profile.html')
