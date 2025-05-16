@@ -79,8 +79,8 @@ DATABASES = {
         'PORT': '5432'
     }
 }
-#if DISABLE_DB:
-#    DATABASES = {}
+if DISABLE_DB:
+    DATABASES = {}
 
 
 # Password validation

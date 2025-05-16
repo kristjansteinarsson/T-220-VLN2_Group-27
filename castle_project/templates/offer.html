@@ -1,7 +1,112 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/offer.css' %}?v=1.1">
+{% endblock %}
+
 {% block content %}
+<<<<<<< Updated upstream
+<div class="offer-container">
+    <!-- Method Selection -->
+    <div class="method-selector">
+        <h3>Select Payment Method:</h3>
+        <div class="method-options">
+            <button class="method-btn active" data-method="credit-card">
+                <i class="fas fa-credit-card"></i> Credit Card
+            </button>
+            <button class="method-btn" data-method="bank-transfer">
+                <i class="fas fa-university"></i> Bank Transfer
+            </button>
+            <button class="method-btn" data-method="mortgage">
+                <i class="fas fa-home"></i> Mortgage
+            </button>
+        </div>
+    </div>
+
+    <!-- Credit Card Form -->
+    <div class="payment-method active" id="credit-card">
+        <form class="payment-form" onsubmit="submitOffer(event)">
+            <div class="form-group">
+                <label>Card Number</label>
+                <input type="text" placeholder="1234 5678 9012 3456" required>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Expiry Date</label>
+                    <input type="text" placeholder="MM/YY" required>
+                </div>
+                <div class="form-group">
+                    <label>CVV</label>
+                    <input type="text" placeholder="123" required>
+                </div>
+            </div>
+            <div class="form-actions">
+                <button type="submit" class="submit-btn">
+                    <i class="fas fa-lock"></i> Finalise Payment
+                </button>
+                <a href="{% url 'home' %}" class="back-btn">
+                    <i class="fas fa-arrow-left"></i> Go Back
+                </a>
+            </div>
+        </form>
+    </div>
+
+    <!-- Bank Transfer Form -->
+    <div class="payment-method" id="bank-transfer">
+        <form class="payment-form" onsubmit="submitOffer(event)">
+            <div class="form-group">
+                <label>Account Holder Name</label>
+                <input type="text" placeholder="Your Full Name" required>
+            </div>
+            <div class="form-group">
+                <label>Account Number</label>
+                <input type="text" placeholder="123456789" required>
+            </div>
+            <div class="form-actions">
+                <button type="submit" class="submit-btn">
+                    <i class="fas fa-exchange-alt"></i> Confirm Transfer
+                </button>
+                <a href="{% url 'home' %}" class="back-btn">
+                    <i class="fas fa-arrow-left"></i> Go Back
+                </a>
+            </div>
+        </form>
+    </div>
+
+    <!-- Mortgage Form -->
+    <div class="payment-method mortgage" id="mortgage">
+        <form class="payment-form" onsubmit="submitOffer(event)">
+            <div class="form-group">
+                <label>Down Payment (ISK)</label>
+                <input type="number" placeholder="5000000" required>
+            </div>
+            <div class="form-group">
+                <label>Loan Term</label>
+                <select required>
+                    <option value="">Select Term</option>
+                    <option>15 Years</option>
+                    <option>20 Years</option>
+                    <option>30 Years</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Email Address</label>
+                <input type="email" placeholder="Email@email.com" required>
+            </div>
+            <div class="form-actions">
+                <button type="submit" class="submit-btn">
+                    <i class="fas fa-file-signature"></i> Apply for Mortgage
+                </button>
+                <a href="{% url 'home' %}" class="back-btn">
+                    <i class="fas fa-arrow-left"></i> Go Back
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+<script src="{% static 'js/offer_js.js' %}"></script>
+=======
 
 
 <div class="payment-container">
@@ -39,4 +144,5 @@
         </div>
     </div>
 </div>
+>>>>>>> Stashed changes
 {% endblock %}

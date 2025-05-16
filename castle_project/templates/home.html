@@ -3,20 +3,14 @@
 {% load humanize %}
 {% block content %}
 
-{% if not hide_create_btn %}
-<div class="mb-4">
-    <a href="{% url 'create-property' %}" class="btn btn-outline-dark"><i class="fa fa-home"></i> Create New Property</a>
-</div>
-{% endif %}
         <div class="rounded-box search-box">
+            <h2>Filters</h2>
+            <hr>
             <form method="get" action="." class="search-form">
                 <div class="form-row">
                     <!-- Price Range -->
                     <div class="form-group">
                         <label for="price-toggle">Price Range (ISK)</label>
-                        <button type="button" id="price-toggle" class="slider-toggle" onclick="toggleSlider()">
-                            Adjust Price Range
-                        </button>
                         <div id="price-slider" class="slider-container">
                             <div class="slider-values">
                                 <span id="min-value">{{ min_price|default:0|floatformat:0 }}</span>
@@ -29,7 +23,16 @@
                                     value="{{ request.GET.max_price|default:20000000 }}" step="10000">
                         </div>
                     </div>
+                    <!-- Postal Code -->
+                    <div class="form-group postal-code">
+                        <label for="postal_code">Postal Code</label>
+                        <input type="text" id="postal_code" name="postal_code" placeholder="e.g. 101" value="{{ request.GET.postal_code }}">
+                    </div>
+                    
+                    
+                </div>
 
+                <div class="form-row">
                     <!-- Property Type -->
                     <div class="form-group">
                         <label for="property_type">Property Type</label>
@@ -40,26 +43,18 @@
                             {% endfor %}
                         </select>
                     </div>
-                </div>
-
-                <div class="form-row">
-                    <!-- Postal Code -->
-                    <div class="form-group">
-                        <label for="postal_code">Postal Code</label>
-                        <input type="text" id="postal_code" name="postal_code" placeholder="e.g. 101" style="width: 545px"
-                               value="{{ request.GET.postal_code }}">
+                    <div class="form-button-row">
+                        <button type="submit" class="search-button" style="width: 100px;">Search</button>
                     </div>
                 </div>
-
-                <button type="submit" class="search-button" style="width: 100px">Search</button>
+                
             </form>
         </div>
 
         <!-- Properties Box -->
         <div class="rounded-box properties-box">
             <h2 class="box-title">Available Properties</h2>
-            <p>Found {{ properties|length }} properties</p>
-            
+            <hr>
             <div class="property-grid">
                 {% for property in properties %}
                     <div class="property-card">
@@ -71,23 +66,25 @@
                             {% endwith %}
                         </div>
                         <div class="property-info">
-                            <h3>{{ property.address }} {{ property.house_number }}</h3><h4>{{ property.city }}</h4>
+                            <h3>{{ property.address }} {{ property.house_number }}</h3><h4>{{ property.city }} {{ property. }}</h4>
                             <div class="property-meta">
                                 {% if property.sold == 1 %}
                                     <span class="property-type">Available</span>
                                 {% else %}
                                     <span class="property-type">Sold</span>
                                 {% endif %}
-                                <span class="property-price">{{ property.sold |floatformat:0 }} ISK</span>
+                                <span class="property-price">{{ property.price |floatformat:0 }} ISK</span>
                             </div>
                             <p class="property-location">{{ property.location }}</p>
                             <p class="property-description">{{ property.description|truncatewords:20 }}</p>
-                            <a href="{% url 'property-by-id' property.id %}">
-                                <button class="view-button">View Details</button>
-                            </a>
-                            <a href="{% url 'property-offer' property.id %}" class="offer-button">
-                                Make Offer
-                            </a>
+                            <div class="button-container">
+                                <a href="{% url 'property-by-id' property.id %}" class="button-wrapper">
+                                    <button class="view-button">View Details</button>
+                                </a>
+                                <a href="{% url 'property-offer' property.id %}" class="button-wrapper">
+                                    <button class="offer-button">Make Offer</button>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 {% endfor %}
@@ -95,5 +92,3 @@
         </div>
         <script src="{% static 'js/property_filter.js' %}"></script>
         {% endblock %}
-
-

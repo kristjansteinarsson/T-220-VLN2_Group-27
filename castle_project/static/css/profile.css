@@ -1,0 +1,93 @@
+.profile-container {
+    max-width: 800px !important;
+    margin: auto !important;
+    padding: 2rem !important;
+    text-align: center !important;
+    position: relative !important;
+}
+
+.top-left {
+    text-align: left !important;
+}
+
+.top-right {
+    position: absolute !important;
+    top: 2rem !important;
+    right: 2rem !important;
+}
+
+.profile-image-wrapper {
+    position: relative !important;
+    display: inline-block !important;
+}
+
+.profile-image {
+    width: 180px !important;
+    height: 180px !important;
+    border-radius: 50% !important;
+    object-fit: cover !important;
+    border: 2px solid #ccc !important;
+}
+
+.edit-icon {
+    position: absolute !important;
+    bottom: 10px !important;
+    right: 10px !important;
+    background: white !important;
+    border-radius: 50% !important;
+    padding: 0.4rem !important;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2) !important;
+    cursor: pointer !important;
+}
+
+.user-info {
+    margin-top: 1rem !important;
+}
+
+.profile-btn {
+    margin: 0.5rem !important;
+    padding: 0.5rem 1.2rem !important;
+    background-color: #2c3e50  !important;
+    border: none !important;
+    border-radius: 6px !important;
+    cursor: pointer !important;
+    color: white !important;
+}
+
+.about-section {
+    margin-top: 2rem !important;
+    text-align: left !important;
+    white-space: pre-line !important;
+}
+
+.styled-button {
+    background-color: #d0cac8 !important;
+    border: none !important;
+    border-radius: 8px !important;
+    padding: 10px 16px !important;
+    font-size: 14px !important;
+    cursor: pointer !important;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2) !important;
+    text-decoration: none !important;
+    color: black !important;
+    display: inline-block !important;
+    transition: background-color 0.2s !important;
+}
+
+.styled-button:hover {
+    background-color: #c1b9b7 !important;
+}
+
+a.go-back-btn {
+    display: inline-block !important;
+    background-color: #d0cac8 !important;
+    color: black !important;
+    text-decoration: none !important;
+    padding: 10px 16px !important;
+    border: none !important;
+    border-radius: 8px !important;
+    font-size: 14px !important;
+    cursor: pointer !important;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2) !important;
+    margin-left: 20px !important;
+}
