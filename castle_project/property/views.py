@@ -62,11 +62,20 @@ from django.shortcuts import render
 from .models import Property, PropertyType
 
 def home(request):
+<<<<<<< Updated upstream
+=======
+    properties = Property.objects.all()  # Limit to top 6 for example
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
     if settings.DISABLE_DB:
         properties = [
             MOCK_PROPERTY,
             MOCK_PROPERTY,
         ]
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
         property_types = []
         min_price = 0
         max_price = 0
@@ -98,6 +107,11 @@ def home(request):
         'min_price': min_price,
         'max_price': max_price,
     })
+=======
+=======
+>>>>>>> Stashed changes
+    return render(request, "home.html", {"properties": properties})
+>>>>>>> Stashed changes
 
 def login_view(request):
     return render(request, 'log_in.html')
@@ -143,12 +157,28 @@ def update_property(request, id):
         })
 
 
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
 def offer_view(request, property_id): 
+=======
+def offer_view(request, property_id):
+>>>>>>> Stashed changes
+=======
+def offer_view(request, property_id):
+>>>>>>> Stashed changes
     property = get_object_or_404(Property, id=property_id)
     
     dummy_offer = {
         'status': 'demo',
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
         'price': property.price * 0.9,
+=======
+       'price': property.price * 0.9,  # 10% below asking as example
+>>>>>>> Stashed changes
+=======
+       'price': property.price * 0.9,  # 10% below asking as example
+>>>>>>> Stashed changes
         'contact_phone': '+354 123 4567',
         'contact_email': 'offers@example.com'
     }
@@ -157,7 +187,13 @@ def offer_view(request, property_id):
         'property': property,
         'offer': dummy_offer 
     })
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
 
 
 def profile_view(request):
     return render(request, 'profile.html')
+=======
+>>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
