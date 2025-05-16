@@ -64,6 +64,20 @@
     gap: 1rem;
 }
 
+.mortgage .form-group input{
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    background: #f9f9f9;
+    width: 100%;
+}
+
+.mortgage .form-group select{
+    border-radius: 6px;
+    width: 100%;
+    background: #f9f9f9;
+}
+
 .form-row {
     display: flex;
     gap: 1rem;
@@ -126,6 +140,22 @@ input[type="text"] {
 .contact-info i {
     width: 1.2rem;
     color: #7f8c8d;
+}
+
+.back-btn{
+    display: inline-block;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.back-btn:hover{
+    text-decoration: underline;
+}
+
+button[type="submit"] {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 /* Method Selection */

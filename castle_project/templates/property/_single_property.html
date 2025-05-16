@@ -1,49 +1,51 @@
-<div class="card" style="width: 18rem;">
+<div class="card">
     {% if is_detail %}
         {% for image in property.propertyimage_set.all %}
             <img src="{{ image.image_url }}" alt="property image" class="card-img-top"/>
         {% endfor %}
     {% else %}
-        {% if user %}
-            {% for image in property.propertyimage_set.all %}
-                <img src="{{ image.image_url }}" alt="property image" class="card-img-top"/>
-            {% endfor %}
-        {% else %}
-            {% with property.propertyimage_set.first as first_image %}
-                {% if first_image %}
-                    <img src="{{ first_image.image_url }}" class="card-img-top" alt="Property image"/>
-                {% endif %}
-            {% endwith %}
-        {% endif %}
+        {% with property.propertyimage_set.first as first_image %}
+            {% if first_image %}
+                <img src="{{ first_image.image_url }}" class="card-img-top" alt="Property image"/>
+            {% endif %}
+        {% endwith %}
     {% endif %}
 
     <div class="card-body">
-        <h5 class="card-title">{{ property.address }}</h5>
-        <div>
-            <p class="card-text">Price: {{ property.price }}</p>
+        <div class="title-and-sell">
+            <div>
+                <h5 class="card-title">{{ property.address }}</h5>
+                <p class="card-text">Price: {{ property.price }}</p>
+            </div>
+        {% if property.sold %}
+            <h5 class="status">Sold</h5>
+        {% else %}
+            <h5 class="status">Available</h5>
+        {% endif %}
         </div>
         <br>
         <div>
             Nr of bedrooms: {{ property.nr_of_bedrooms }}<br>
             Nr of bathrooms: {{ property.nr_of_bathrooms }}
         </div>
+        
         <p class="card-text">Square meters: {{ property.square_meters }}</p>
         <p class="card-text">Property type: {{ property.property_type }}</p>
 
-        {% if property.sold %}
-            <div class="property-category"><h3>SOLD!</h3></div>
-        {% endif %}
-
-        {% if is_detail %}
-            <a href="javascript:history.back()" class="btn btn-primary">Go back</a>
-            <p>
-                <strong>Seller:</strong>
-                <a href="{% url 'user-by-id' property.user.id %}">{{ property.user.name }}</a>
-            </p>
-        {% else %}
-            <a href="{% url 'property-by-id' property.id %}" class="btn btn-primary">View</a>
-        {% endif %}
-        <a href="{% url 'update-property' id=property.id %}" class="btn btn-secondary">Update</a>
-        <a href="{% url 'delete-property' id=property.id %}" class="btn btn-secondary">Delete</a>
+        <div class="card-bottom">
+            {% if is_detail %}
+                <a href="javascript:history.back()" class="btn btn-primary">Go back</a>
+                <p>
+                    <strong>Seller:</strong>
+                    <a href="{% url 'user-by-id' property.user.id %}">{{ property.user.name }}</a>
+                </p>
+            {% else %}
+                <a href="{% url 'property-by-id' property.id %}" class="btn btn-primary">View</a>
+            {% endif %}
+            <div>
+                <a href="{% url 'update-property' id=property.id %}" class="btn btn-secondary">Update</a>
+                <a href="{% url 'delete-property' id=property.id %}" class="btn btn-secondary">Delete</a>
+            </div>
+        </div>
     </div>
 </div>

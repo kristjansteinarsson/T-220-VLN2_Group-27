@@ -2,11 +2,14 @@
 {% load static %}
 
 {% block content %}
+    <link rel="stylesheet" href="{% static 'css/login-signup.css' %}?v=1.1">
 
         <form method="post" action="{% url 'register' %}" class="form-container">
+            <h2>Sign Up</h2>
             {% csrf_token %}
             {{ form }}
             <input type="submit" class="btn btn-primary" value="Register" />
+            <a href="{% url 'login' %}">Log In</a>
         </form>
 
 {% endblock %}

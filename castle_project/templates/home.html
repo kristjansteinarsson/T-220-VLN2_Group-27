@@ -3,20 +3,12 @@
 {% load humanize %}
 {% block content %}
 
-{% if not hide_create_btn %}
-<div class="mb-4">
-    <a href="{% url 'create-property' %}" class="btn btn-outline-dark"><i class="fa fa-home"></i> Create New Property</a>
-</div>
-{% endif %}
         <div class="rounded-box search-box">
             <form method="get" action="." class="search-form">
                 <div class="form-row">
                     <!-- Price Range -->
                     <div class="form-group">
                         <label for="price-toggle">Price Range (ISK)</label>
-                        <button type="button" id="price-toggle" class="slider-toggle" onclick="toggleSlider()">
-                            Adjust Price Range
-                        </button>
                         <div id="price-slider" class="slider-container">
                             <div class="slider-values">
                                 <span id="min-value">{{ min_price|default:0|floatformat:0 }}</span>
@@ -77,7 +69,7 @@
                                 {% else %}
                                     <span class="property-type">Sold</span>
                                 {% endif %}
-                                <span class="property-price">{{ property.sold |floatformat:0 }} ISK</span>
+                                <span class="property-price">{{ property.price |floatformat:0 }} ISK</span>
                             </div>
                             <p class="property-location">{{ property.location }}</p>
                             <p class="property-description">{{ property.description|truncatewords:20 }}</p>
@@ -96,5 +88,3 @@
         </div>
         <script src="{% static 'js/property_filter.js' %}"></script>
         {% endblock %}
-
-

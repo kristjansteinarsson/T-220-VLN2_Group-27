@@ -114,7 +114,6 @@ footer {
     max-width: 1200px;
     margin: 2rem auto;
     padding: 0 1rem;
-    padding-bottom: 80px; 
 }
 
 .search-box {
@@ -301,6 +300,10 @@ main {
     padding-bottom: 80px;
 }
 
+.bottom-space{
+    margin-bottom: 15vh;
+}
+
 .button-wrapper {
     display: block;
     width: 100%;
@@ -313,22 +316,4 @@ main {
     background-color: #40556a !important; 
     transform: translateY(-2px);
     box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-}
-
-.view-button, .offer-button {
-    all: initial; 
-    display: block !important;
-    width: 100% !important;
-    background-color: #2c3e50 !important;
-    color: white !important;
-    border: none !important;
-    padding: 0.75rem 1.5rem !important;
-    border-radius: 6px !important;
-    cursor: pointer !important;
-    font-weight: 600 !important;
-    text-align: center !important;
-    transition: all 0.3s ease !important;
-    margin: 0 !important;
-    font-family: inherit !important;
-    font-size: inherit !important;
 }
