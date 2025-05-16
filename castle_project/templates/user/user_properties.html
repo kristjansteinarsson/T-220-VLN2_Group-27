@@ -1,7 +1,11 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h1>{{ user.name }}'s properties</h1>
+    {% if user.name %}
+        <h1>{{ user.name }}'s properties</h1>
+    {% else %}
+        <h1>Unknown Seller's properties</h1>
+    {% endif %}
 
     {% if properties %}
       <div class="row">

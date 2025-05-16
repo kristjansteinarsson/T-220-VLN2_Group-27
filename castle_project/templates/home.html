@@ -68,7 +68,7 @@
                         <div class="property-info">
                             <h3>{{ property.address }} {{ property.house_number }}</h3><h4>{{ property.city }} {{ property. }}</h4>
                             <div class="property-meta">
-                                {% if property.sold == 1 %}
+                                {% if property.sold == 0 %}
                                     <span class="property-type">Available</span>
                                 {% else %}
                                     <span class="property-type">Sold</span>

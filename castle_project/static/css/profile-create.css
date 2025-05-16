@@ -1,0 +1,11 @@
+.title{
+    margin: 50px;
+    text-align: center;
+}
+
+.current-info, main form{
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 20px;
+}

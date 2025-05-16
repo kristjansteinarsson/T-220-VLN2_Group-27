@@ -1,20 +1,30 @@
-<h2>Complete Your Profile</h2>
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'css/profile-create.css' %}?v=1.1">
+<h2 class="title">Complete Your Profile</h2>
 
 <!-- Display current values -->
-<h2>Current User Info</h2>
-<p><strong>Username:</strong> {{ user.auth_user.username }}</p>
-<p><strong>User type:</strong> {{ user.user_type|default:"Not set" }}</p>
-<p><strong>City:</strong> {{ user.city|default:"Not set" }}</p>
-<p><strong>Postal Code:</strong> {{ user.postal_code|default:"Not set" }}</p>
-<p><strong>Address:</strong> {{ user.address|default:"Not set" }}</p>
-<p><strong>Bio:</strong> {{ user.bio|default:"Not set" }}</p>
-<p><strong>Is Real Estate Agent:</strong>
-  {% if user.user_is_realestate %} ✅ Yes {% else %} ❌ No {% endif %}
-</p>
-
+<div class="current-info">
+  <h2>Your Account <i class="fa fa-person"></i></h2>
+  <hr>
+  <p><strong>Username:</strong> {{ user.auth_user.username }}</p>
+  <p><strong>User type:</strong> {{ user.user_type|default:"Not set" }}</p>
+  <p><strong>City:</strong> {{ user.city|default:"Not set" }}</p>
+  <p><strong>Postal Code:</strong> {{ user.postal_code|default:"Not set" }}</p>
+  <p><strong>Address:</strong> {{ user.address|default:"Not set" }}</p>
+  <p><strong>Bio:</strong> {{ user.bio|default:"Not set" }}</p>
+  <p><strong>Is Real Estate Agent:</strong>
+    {% if user.user_is_realestate %} ✅ Yes {% else %} ❌ No {% endif %}
+  </p>
+</div>
 
 <!-- Profile Info Form -->
 <form method="post" action="{% url 'profile' %}">
+  <h2>Update Information <i class="fa fa-pencil"></i></h2>
+  <hr>
   {% csrf_token %}
   {{ form.as_p }}
   <button type="submit" name="profile_submit" class="btn btn-primary">Save Profile</button>
@@ -22,7 +32,9 @@
 
 <!-- Login Info Form -->
 <form method="post" action="{% url 'profile' %}">
+  <h2>Update Name and/or Password <i class="fa fa-cog"></i></h2>
   {% csrf_token %}
   {{ auth_form.as_p }}
   <button type="submit" name="auth_submit" class="btn btn-warning">Update Login Info</button>
 </form>
+{% endblock %}
