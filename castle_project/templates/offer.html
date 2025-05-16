@@ -1,6 +1,10 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/offer.css' %}?v=1.1">
+{% endblock %}
+
 {% block content %}
 <div class="offer-container">
     <!-- Method Selection -->
@@ -70,7 +74,7 @@
     </div>
 
     <!-- Mortgage Form -->
-    <div class="payment-method" id="mortgage">
+    <div class="payment-method mortgage" id="mortgage">
         <form class="payment-form" onsubmit="submitOffer(event)">
             <div class="form-group">
                 <label>Down Payment (ISK)</label>
