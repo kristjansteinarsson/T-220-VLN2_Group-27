@@ -12,20 +12,12 @@ class UserProfileForm(forms.ModelForm):
             'bio', 'user_is_realestate'
         ]
 
-
-
-
 class UsernamePasswordForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput(), required=False)
 
     class Meta:
         model = AuthUser
         fields = ['username', 'password']
-
-
-
-
-
 
 from django import forms
 from django.contrib.auth.models import User  # built-in user
