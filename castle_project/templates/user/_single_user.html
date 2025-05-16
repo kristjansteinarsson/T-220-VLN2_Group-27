@@ -10,6 +10,7 @@
         {% endif %}
 
         {% if user.logo and user.logo != "None" %}
+            <p>Works for:</p>
             <img src="{{ user.logo }}" alt="Logo" style="width: 100px; margin-top: 10px;">
         {% else %}
             <p class="text-muted mt-2">Individual Seller</p>
