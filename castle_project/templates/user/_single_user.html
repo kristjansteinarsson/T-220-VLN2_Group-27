@@ -18,8 +18,8 @@
     </div>
     <div class="col-md-8">
       <div class="card-body" style="margin: 15px;">
-        {% if user.name %}
-            <h5 class="card-title">{{ user.name }}</h5>
+        {% if user.auth_user %}
+            <h5 class="card-title">{{ user.auth_user }}</h5>
         {% else %}
             <h5 class="card-title text-muted">Unnamed Seller</h5>
         {% endif %}

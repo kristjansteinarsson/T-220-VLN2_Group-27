@@ -7,7 +7,7 @@ class UserProfileForm(forms.ModelForm):
     class Meta:
         model = User
         fields = [
-            'user_type', 'user_cover_image', 'logo',
+            'user_cover_image', 'logo',
             'address', 'city', 'postal_code',
             'bio', 'user_is_realestate'
         ]
