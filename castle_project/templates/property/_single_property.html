@@ -1,56 +1,66 @@
-<div class="card" style="width: 18rem;">
-    {% if is_detail %}
-        {% for image in property.propertyimage_set.all %}
-            <img src="{{ image.image_url }}" alt="property image" class="card-img-top"/>
-        {% endfor %}
-    {% else %}
-        {% if user %}
+<div class="center-container">
+    <div class="card" style="width: 18rem;">
+        {% if is_detail %}
             {% for image in property.propertyimage_set.all %}
                 <img src="{{ image.image_url }}" alt="property image" class="card-img-top"/>
             {% endfor %}
         {% else %}
-            {% with property.propertyimage_set.first as first_image %}
-                {% if first_image %}
-                    <img src="{{ first_image.image_url }}" class="card-img-top" alt="Property image"/>
-                {% endif %}
-            {% endwith %}
-        {% endif %}
-    {% endif %}
-
-    <div class="card-body">
-        <h5 class="card-title">{{ property.address }}</h5>
-        <div>
-            <p class="card-text">Price: {{ property.price }}</p>
-        </div>
-        <br>
-        <div>
-            Nr of bedrooms: {{ property.nr_of_bedrooms }}<br>
-            Nr of bathrooms: {{ property.nr_of_bathrooms }}
-        </div>
-        <p class="card-text">Square meters: {{ property.square_meters }}</p>
-        <p class="card-text">Property type: {{ property.property_type }}</p>
-
-        {% if property.sold %}
-            <div class="property-category"><h3>SOLD!</h3></div>
-        {% endif %}
-
-        {% if is_detail %}
-            <a href="javascript:history.back()" class="btn btn-primary">Go back</a>
-            {% if property.user %}
-              <a href="{% url 'user-by-id' property.user.id %}">View Owner</a>
+            {% if user %}
+                {% for image in property.propertyimage_set.all %}
+                    <img src="{{ image.image_url }}" alt="property image" class="card-img-top"/>
+                {% endfor %}
             {% else %}
-              <p><em>No owner assigned.</em></p>
+                {% with property.propertyimage_set.first as first_image %}
+                    {% if first_image %}
+                        <img src="{{ first_image.image_url }}" class="card-img-top" alt="Property image"/>
+                    {% endif %}
+                {% endwith %}
             {% endif %}
-        {% else %}
-            <a href="{% url 'property-by-id' property.id %}" class="btn btn-primary">View</a>
-        {% endif %}
-        {% if is_owner %}
-          <a href="{% url 'update-property' property.id %}" class="btn btn-primary">Update</a>
-          <form action="{% url 'delete-property' property.id %}" method="post" style="display:inline;">
-            {% csrf_token %}
-            <button type="submit" class="btn btn-danger">Delete</button>
-          </form>
         {% endif %}
 
+        <div class="card-body">
+            <div style="display: flex; justify-content: space-between;">
+                <div>
+                    <h5 class="card-title">{{ property.address }}</h5>
+                    <p class="card-text">Price: {{ property.price }}</p>
+                </div>
+                
+                {% if property.sold %}
+                    <div class="property-category"><h3>Sold</h3></div>
+                {% else %}
+                    <div class="property-category"><h3>Available</h3></div>
+
+                {% endif %}
+            </div>
+            <br>
+            <div>
+                Nr of bedrooms: {{ property.nr_of_bedrooms }}<br>
+                Nr of bathrooms: {{ property.nr_of_bathrooms }}
+            </div>
+            <p class="card-text">Square meters: {{ property.square_meters }}</p>
+            <p class="card-text">Property type: {{ property.property_type }}</p>
+
+
+            {% if is_detail %}
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                <a style="background-color: #2c3e50;" href="javascript:history.back()" class="btn btn-primary">Go back</a>
+                {% if property.user %}
+                    <a href="{% url 'user-by-id' property.user.id %}">View Owner</a>
+                {% else %}
+                    <p><em>No owner assigned.</em></p>
+                {% endif %}
+                </div>
+            {% else %}
+                <a href="{% url 'property-by-id' property.id %}" class="btn btn-primary">View</a>
+            {% endif %}
+            {% if is_owner %}
+                <a href="{% url 'update-property' property.id %}" class="btn btn-primary">Update</a>
+                <form action="{% url 'delete-property' property.id %}" method="post" style="display:inline;">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+            {% endif %}
+
+        </div>
     </div>
 </div>
