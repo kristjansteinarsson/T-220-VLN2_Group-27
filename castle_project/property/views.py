@@ -1,8 +1,8 @@
 from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render, redirect, get_object_or_404
+from django.conf import settings
 from property.models import Property, PropertyImage, PropertyType
 from user.models import User
-from django.conf import settings
 from .forms.property_create_form import PropertyCreateForm
 from .forms.property_update_form import PropertyUpdateForm
 
@@ -25,7 +25,6 @@ def index(request):
                 'price': x.price,
                 'postal_code': x.postal_code,
                 'image_url': x.propertyimage_set.first().image if x.propertyimage_set.exists() else None
-
             } for x in Property.objects.filter(address__icontains=request.GET['search_filter']).order_by('address')]
         })
 
@@ -44,44 +43,14 @@ def get_property_by_id(request, id):
         "property": props
     })
 
-def get_property_type_by_id(request):
-    property_types = PropertyType.objects.all()
-    return render(request, 'home.html', {
-        'property_types': property_types,
-    })
-
-def get_property_type_by_id(request):
-    property_types = PropertyType.objects.all()
-    return render(request, 'home.html', {
-        'property_types': property_types,
-    })
-
-from .models import Property
-
-from django.shortcuts import render
-from .models import Property, PropertyType
-
 def home(request):
-<<<<<<< Updated upstream
-=======
-    properties = Property.objects.all()  # Limit to top 6 for example
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
     if settings.DISABLE_DB:
-        properties = [
-            MOCK_PROPERTY,
-            MOCK_PROPERTY,
-        ]
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
+        properties = [MOCK_PROPERTY, MOCK_PROPERTY]
         property_types = []
         min_price = 0
         max_price = 0
     else:
         property_types = PropertyType.objects.all()
-
         properties = Property.objects.all()
 
         min_price = request.GET.get('min_price', 0)
@@ -100,18 +69,12 @@ def home(request):
         if postal_code:
             properties = properties.filter(postal_code__icontains=postal_code)
 
-
     return render(request, "home.html", {
         'properties': properties,
         'property_types': property_types,
         'min_price': min_price,
         'max_price': max_price,
     })
-=======
-=======
->>>>>>> Stashed changes
-    return render(request, "home.html", {"properties": properties})
->>>>>>> Stashed changes
 
 def login_view(request):
     return render(request, 'log_in.html')
@@ -119,81 +82,48 @@ def login_view(request):
 def signup_view(request):
     return render(request, 'sign_up.html')
 
-
 def create_property(request):
     if request.method == "POST":
         form = PropertyCreateForm(request.POST)
         if form.is_valid():
             property = form.save()
             property_image = form.cleaned_data.get('image')
-
-            # Fix: Use image_url instead of image
             image = PropertyImage(image_url=property_image, property=property)
             image.save()
-
             return redirect('property-by-id', id=property.id)
-    else:
-        return render(request, "property/create_property.html", {
-            'form': PropertyCreateForm()
-        })
+    return render(request, "property/create_property.html", {
+        'form': PropertyCreateForm()
+    })
 
 def delete_property(request, id):
     property = get_object_or_404(Property, id=id)
     property.delete()
     return redirect('property-index')
 
-
 def update_property(request, id):
     property = get_object_or_404(Property, id=id)
-    if request.method =="POST":
+    if request.method == "POST":
         form = PropertyUpdateForm(request.POST, instance=property)
         if form.is_valid():
             form.save()
-            return redirect(f'property-by-id', id=id)
-    else:
-        return render(request, 'property/update_property.html', {
-            'id': id,
-            'form': PropertyUpdateForm(instance=property)
-        })
+            return redirect('property-by-id', id=id)
+    return render(request, 'property/update_property.html', {
+        'id': id,
+        'form': PropertyUpdateForm(instance=property)
+    })
 
-
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-def offer_view(request, property_id): 
-=======
 def offer_view(request, property_id):
->>>>>>> Stashed changes
-=======
-def offer_view(request, property_id):
->>>>>>> Stashed changes
     property = get_object_or_404(Property, id=property_id)
-    
     dummy_offer = {
         'status': 'demo',
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
         'price': property.price * 0.9,
-=======
-       'price': property.price * 0.9,  # 10% below asking as example
->>>>>>> Stashed changes
-=======
-       'price': property.price * 0.9,  # 10% below asking as example
->>>>>>> Stashed changes
         'contact_phone': '+354 123 4567',
         'contact_email': 'offers@example.com'
     }
-    
     return render(request, 'offer.html', {
         'property': property,
-        'offer': dummy_offer 
+        'offer': dummy_offer
     })
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-
 
 def profile_view(request):
     return render(request, 'profile.html')
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
