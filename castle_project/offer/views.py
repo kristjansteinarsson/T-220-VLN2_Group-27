@@ -19,6 +19,25 @@ def index(request):
         } for x in Offer.objects.all()],
     })
 
+def my_offers(request):
+    user = request.user
+    if user.is_authenticated:
+        offers = Offer.objects.filter(user_id=user.id)
+        return render(request, "offer/my-offers.html", {
+            'offers': [{
+                'id': x.id,
+                'property_id': x.property_id,
+                'offer_date': x.offer_date,
+                'offer_expiration': x.offer_expiration,
+                'offer_status': x.offer_status,
+                'user_id': x.user_id,
+                'offer_price': x.offer_price
+
+            } for x in offers],
+        })
+    else:
+        return HttpResponse("You are not logged in.")
+
 def home(request):
     return render(request, "home.html")
 
