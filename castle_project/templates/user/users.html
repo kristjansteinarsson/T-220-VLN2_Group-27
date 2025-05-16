@@ -7,9 +7,9 @@
 
             <div class="property-item">
                 <div><h3>{{ user.name }}</h3></div>
-                <img style="width: 200px; height: 200px; object-fit: cover; border-radius: 8px; .user" src="{{ user.user_cover_image }}" alt="Image" />
+                <img style="width: 200px; height: 200px; object-fit: cover; border-radius: 8px;" src="{{ user.user_cover_image }}" alt="Image" />
                 {% if user.logo == "None" %}
-                 {% else %}
+                {% else %}
                     <br>
                     <img style="width: 100px; height: 100px; object-fit: cover; border-radius: 8px;" src="{{ user.logo }}" alt="Real Estate Logo"/>
                 {% endif %}
@@ -18,7 +18,7 @@
                 <div> Postal code: {{ user.postal_code }}</div>
                 <br>
                 <div class="user-category">Bio: {{ user.bio }}</div>
-                <a href="{% url "user-by-id" id=user.id %}" class="btn btn-primary">View Profile</a>
+                <a href="{% url 'user-by-id' user.id %}" class="btn btn-primary">View Profile</a>
             </div>
 
         {% endfor %}

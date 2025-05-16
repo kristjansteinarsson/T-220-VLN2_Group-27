@@ -4,6 +4,8 @@
 {% block content %}
 
         <div class="rounded-box search-box">
+            <h2>Filters</h2>
+            <hr>
             <form method="get" action="." class="search-form">
                 <div class="form-row">
                     <!-- Price Range -->
@@ -21,7 +23,16 @@
                                     value="{{ request.GET.max_price|default:20000000 }}" step="10000">
                         </div>
                     </div>
+                    <!-- Postal Code -->
+                    <div class="form-group postal-code">
+                        <label for="postal_code">Postal Code</label>
+                        <input type="text" id="postal_code" name="postal_code" placeholder="e.g. 101" value="{{ request.GET.postal_code }}">
+                    </div>
+                    
+                    
+                </div>
 
+                <div class="form-row">
                     <!-- Property Type -->
                     <div class="form-group">
                         <label for="property_type">Property Type</label>
@@ -32,25 +43,18 @@
                             {% endfor %}
                         </select>
                     </div>
-                </div>
-
-                <div class="form-row">
-                    <!-- Postal Code -->
-                    <div class="form-group">
-                        <label for="postal_code">Postal Code</label>
-                        <input type="text" id="postal_code" name="postal_code" placeholder="e.g. 101" style="width: 545px"
-                                value="{{ request.GET.postal_code }}">
+                    <div class="form-button-row">
+                        <button type="submit" class="search-button" style="width: 100px;">Search</button>
                     </div>
                 </div>
-
-                <button type="submit" class="search-button" style="width: 100px">Search</button>
+                
             </form>
         </div>
 
         <!-- Properties Box -->
         <div class="rounded-box properties-box">
             <h2 class="box-title">Available Properties</h2>
-            
+            <hr>
             <div class="property-grid">
                 {% for property in properties %}
                     <div class="property-card">
